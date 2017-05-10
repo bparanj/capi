@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello jQuery JSON</title>
+    <title>Hello jQuery Vue.js </title>
+    <link rel="stylesheet" type="text/css" href="static.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   </head>
 
   <body>
-    <p>Articles</p>
-    <ul id='article_list'></ul>
+    <div id="container">
+      <h1>My Blog</h1> 
+
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="article in articles">
+            <td>{{article.id}}</td>
+            <td>{{article.title}}</td>
+          </tr>
+        </tbody>
+      </table>  
+    </div>
   </body>
   
-  <script>
-    $.getJSON("http://localhost:3030/articles") 
-      .done(function(data) {
-        var $ul = $('#article_list')
-        $.each(data, function(i, article){
-          $ul.append("<li>" + article.id + ": " + article.title)
-          console.log(article['id']);
-          console.log(article['title']);
-        });       
-      })   
-      .fail(function( jqxhr, textStatus, error ) {
-        var err = textStatus + ", " + error;
-        console.log( "Request Failed: " + err ); 
-     });
+  <script type='text/javascript'>
+    var v = new Vue({ 
+      el: '#container',
+      data: {
+        articles: []
+      },
+      mounted: function(){
+        $.get('http://localhost:3030/articles', function(data){ 
+          v.articles = data;
+        })}
+    })    
   </script>
 </html>
-
-
-

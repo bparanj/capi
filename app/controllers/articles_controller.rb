@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.limit(10)
+    @articles = Article.where('id > 151').limit(20)
 
     render json: @articles
   end

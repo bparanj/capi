@@ -229,7 +229,16 @@ References
 
 
 
-
+var v = new Vue({ 
+  el: '#app',
+  data: {
+    articles: []
+  },
+  mounted: function(){
+    $.get('/articles', function(data){ 
+      v.articles = data;
+    })}
+})
 
 
 
