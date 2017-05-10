@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello jQuery JSON</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  </head>
+
+  <body>
+    <p>This is a test</p>
+  </body>
+  
+  <script>
+    $.getJSON( "http://localhost:3030/articles", function(data) {
+      $.each(data, function(i, article){
+        console.log(article['id']);
+        console.log(article['title']);
+      });
+     });
+  </script>
+</html>
+
+
+
+
+
+
+
+
