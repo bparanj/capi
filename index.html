@@ -11,21 +11,21 @@
   </body>
   
   <script>
-    $.getJSON( "http://localhost:3030/articles", function(data) {
-      var $ul = $('#article_list')
-      $.each(data, function(i, article){
-        $ul.append("<li>" + article.id + ": " + article.title)
-        console.log(article['id']);
-        console.log(article['title']);
-      });
+    $.getJSON("http://localhost:3030/articles") 
+      .done(function(data) {
+        var $ul = $('#article_list')
+        $.each(data, function(i, article){
+          $ul.append("<li>" + article.id + ": " + article.title)
+          console.log(article['id']);
+          console.log(article['title']);
+        });       
+      })   
+      .fail(function( jqxhr, textStatus, error ) {
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err ); 
      });
   </script>
 </html>
-
-
-
-
-
 
 
 

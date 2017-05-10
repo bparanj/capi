@@ -207,6 +207,73 @@ References
 
 
 
+<div id="app">
+  <div class="container">
+    <h1>Articles</h1> 
+  
+    <ul v-if="articles && articles.length">
+      <li v-for="article of articles">
+        <p><strong>{{article.id}}</strong></p>
+        <p>{{article.title}}</p>
+      </li>
+    </ul>
+
+    <ul v-if="errors && errors.length">
+      <li v-for="error of errors">
+        {{error.message}}
+      </li>
+    </ul>
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="app">
+  <div class="container">
+    <h1>Articles</h1> 
+      <ul class="list-group">
+        <story v-for="article in articles">
+        </story> 
+      </ul>
+    <pre>{{ $data }}</pre> </div>
+  </div>
+</div>
+
+
+<template>
+  <ul v-if="articles && articles.length">
+    <li v-for="article of articles">
+      <p><strong>{{article.id}}</strong></p>
+      <p>{{article.title}}</p>
+    </li>
+  </ul>
+
+  <ul v-if="errors && errors.length">
+    <li v-for="error of errors">
+      {{error.message}}
+    </li>
+  </ul>
+</template>
+
+
+
+
+
+
+
 
 
 
