@@ -6,12 +6,15 @@
   </head>
 
   <body>
-    <p>This is a test</p>
+    <p>Articles</p>
+    <ul id='article_list'></ul>
   </body>
   
   <script>
     $.getJSON( "http://localhost:3030/articles", function(data) {
+      var $ul = $('#article_list')
       $.each(data, function(i, article){
+        $ul.append("<li>" + article.id + ": " + article.title)
         console.log(article['id']);
         console.log(article['title']);
       });
